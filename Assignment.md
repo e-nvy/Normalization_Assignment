@@ -57,37 +57,67 @@ print(result)
 ```
 
 ### Task 4: Implement Interactive Program
-```python
+```
 import datetime
 
 def save_to_file(cities_string):
+    """
+    Save the entered cities string to a text file named with the current date.
+
+    Parameters:
+    - cities_string (str): The cities string to be saved.
+    """
     current_date = datetime.datetime.now().strftime("%Y-%m-%d")
     with open(f"{current_date}.txt", "a") as file:
         file.write(cities_string + "\n")
 
 def main():
+    """
+    Main function to interact with the user, validate input, and calculate ticket statistics.
+    """
+    # Ticket prices for each city
     ticket_prices = {'B': 29.2, 'C': 16.6, 'H': 34.7, 'L': 31.7, 'M': 38, 'N': 19.8, 'S': 15.2}
+
+    # Initialize ticket counts for each city
     ticket_counts = {city: 0 for city in ticket_prices.keys()}
+
+    # Continuous loop to get user input until 'quit' is entered
     while True:
         cities_string = input("Enter cities string (type 'quit' to exit): ")
+
+        # Check if the user wants to quit
         if cities_string.lower() == 'quit':
             break
+
+        # Validate the entered cities string
         if all(city in ticket_prices for city in cities_string):
+            # Save valid cities string to file
             save_to_file(cities_string)
+
+            # Update ticket counts for each city
             for city in ticket_counts:
                 ticket_counts[city] += cities_string.count(city)
         else:
+            # Inform the user of an error in the entered cities string
             print("Error. Unrecognized city symbol is detected. Please enter the cities string again.")
             print("Acceptable list of cities symbols are B, C, H, L, M, N, and S")
+
+    # Print ticket statistics
     print("Tickets sold for each city:")
     print(ticket_counts)
+    
+    # Print the number of hours in which tickets were sold for each city
     print("Number of hours in which the tickets of each city have been sold:")
     print({city: 1 if count > 0 else 0 for city, count in ticket_counts.items()})
+
+    # Calculate and print the total price of sold tickets
     total_sale = sum(ticket_prices[city] * count for city, count in ticket_counts.items())
     print(f"Total price of sold tickets: £{round(total_sale, 2)}")
 
+# Entry point of the program
 if __name__ == "__main__":
     main()
+
 ```
 
 
