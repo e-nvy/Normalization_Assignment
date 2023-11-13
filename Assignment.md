@@ -46,9 +46,13 @@ def count_tickets(cities):
 
     return ticket_counts
 
-# Example usage:
-cities_string = "BCCBBLNNLLBBMMMBCBCLLMSMBMBMBMNMNSSLSCS"
+# Get user input for the cities string
+cities_string = input("Enter the cities string: ")
+
+# Call the function with user input
 result = count_tickets(cities_string)
+
+# Display the result
 print(result)
 
 ```
