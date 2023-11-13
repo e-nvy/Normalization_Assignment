@@ -31,17 +31,15 @@ print(f"Total sale: £{total_sale}")
 
 ### Task 3: Count Tickets for Each City
 ```
+
 def count_tickets(cities):
-    # Create an empty dictionary to store the counts
-    ticket_counts = {}
+    # Create a dictionary with all cities initialized to 0
+    ticket_counts = {'B': 0, 'C': 0, 'H': 0, 'L': 0, 'M': 0, 'N': 0, 'S': 0}
 
     # Iterate through each symbol in the cities string
     for symbol in cities:
-        # If the symbol is not in the dictionary, add it with a count of 1
-        if symbol not in ticket_counts:
-            ticket_counts[symbol] = 1
-        else:
-            # If the symbol is already in the dictionary, increment its count
+        # If the symbol is in the dictionary, increment its count
+        if symbol in ticket_counts:
             ticket_counts[symbol] += 1
 
     return ticket_counts
@@ -54,6 +52,7 @@ result = count_tickets(cities_string)
 
 # Display the result
 print(result)
+
 
 ```
 
