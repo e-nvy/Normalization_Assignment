@@ -35,17 +35,14 @@ def count_tickets(cities):
     # Create an empty dictionary to store the counts
     ticket_counts = {}
 
-    # Define the mapping of symbols to cities
-    city_mapping = {'B': 'Birmingham', 'C': 'Cardiff', 'H': 'Hereford', 'L': 'Liverpool', 'M': 'Manchester', 'N': 'Newport', 'S': 'Shrewsbury'}
-
     # Iterate through each symbol in the cities string
     for symbol in cities:
-        # Use the symbol to get the corresponding city
-        city = city_mapping.get(symbol)
-
-        # If the city exists in the mapping, increment its count in the dictionary
-        if city:
-            ticket_counts[city] = ticket_counts.get(city, 0) + 1
+        # If the symbol is not in the dictionary, add it with a count of 1
+        if symbol not in ticket_counts:
+            ticket_counts[symbol] = 1
+        else:
+            # If the symbol is already in the dictionary, increment its count
+            ticket_counts[symbol] += 1
 
     return ticket_counts
 
@@ -53,6 +50,7 @@ def count_tickets(cities):
 cities_string = "BCCBBLNNLLBBMMMBCBCLLMSMBMBMBMNMNSSLSCS"
 result = count_tickets(cities_string)
 print(result)
+
 ```
 
 ### Task 4: Implement Interactive Program
