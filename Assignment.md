@@ -30,15 +30,29 @@ print(f"Total sale: £{total_sale}")
 ```
 
 ### Task 3: Count Tickets for Each City
-```python
-def count_tickets(cities_string):
-    ticket_counts = {city: cities_string.count(city) for city in set(cities_string)}
+```
+def count_tickets(cities):
+    # Create an empty dictionary to store the counts
+    ticket_counts = {}
+
+    # Define the mapping of symbols to cities
+    city_mapping = {'B': 'Birmingham', 'C': 'Cardiff', 'H': 'Hereford', 'L': 'Liverpool', 'M': 'Manchester', 'N': 'Newport', 'S': 'Shrewsbury'}
+
+    # Iterate through each symbol in the cities string
+    for symbol in cities:
+        # Use the symbol to get the corresponding city
+        city = city_mapping.get(symbol)
+
+        # If the city exists in the mapping, increment its count in the dictionary
+        if city:
+            ticket_counts[city] = ticket_counts.get(city, 0) + 1
+
     return ticket_counts
 
 # Example usage:
-cities_string = input("Enter cities string: ")
-ticket_counts = count_tickets(cities_string)
-print(ticket_counts)
+cities_string = "BCCBBLNNLLBBMMMBCBCLLMSMBMBMBMNMNSSLSCS"
+result = count_tickets(cities_string)
+print(result)
 ```
 
 ### Task 4: Implement Interactive Program
